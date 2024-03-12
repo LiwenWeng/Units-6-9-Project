@@ -1,2 +1,2 @@
-public class Plant extends Model {
+public class Plant {
 }

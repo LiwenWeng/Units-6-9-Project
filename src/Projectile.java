@@ -1,2 +1,2 @@
-public class Projectile extends Model {
+public class Projectile  {
 }

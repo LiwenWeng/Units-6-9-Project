@@ -1,2 +1,2 @@
-public class Zombie extends Model {
+public class Zombie{
 }

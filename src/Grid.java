@@ -2,7 +2,7 @@ public class Grid {
     private Model[][] map;
 
     public Grid() {
-        map = new Model[5][8];
+        map = new Model[5][9];
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
                 map[i][j] = new Model(new Vector2(i, j));

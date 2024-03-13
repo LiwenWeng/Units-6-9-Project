@@ -8,6 +8,7 @@ public class Grid {
                 map[i][j] = new Model(new Vector2(i, j));
             }
         }
+        map[0][0] = new Sunflower(new Vector2(0, 0));
     }
 
     public void printMap() {
@@ -17,6 +18,9 @@ public class Grid {
             }
             System.out.println();
         }
+    }
+    public void place(Model model, Vector2 position) {
+        map[position.getX()]
     }
 
 

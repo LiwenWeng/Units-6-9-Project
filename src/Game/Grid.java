@@ -1,13 +1,15 @@
 import java.util.ArrayList;
 
 public class Grid {
-
+    ArrayList<ArrayList<ArrayList<Model>>> map;
 
     public Grid() {
-        map = new Model[5][9];
-        for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[i].length; j++) {
-                map[i][j] = new Model(new Vector2(i, j));
+        map = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            map.add(new ArrayList<>());
+            for (int j = 0; j < 8; j++) {
+                map.get(i).add(new ArrayList<>());
+                map.get(i).get(j).add(new Model(new Vector2(i, j)));
             }
         }
         place(new LawnMower(new Vector2(0, 0)));
@@ -18,15 +20,21 @@ public class Grid {
     }
 
     public void printMap() {
-        for (Model[] models : map) {
-            for (Model model : models) {
-                System.out.print(model.getSymbol() + " ");
+        for (ArrayList<ArrayList<Model>> row : map) {
+            for (ArrayList<Model> column : row) {
+                Model highestRender = column.get(0);
+                for (Model model : column) {
+                    if (model.getRenderPriority() > highestRender.getRenderPriority()) {
+                        highestRender = model;
+                    }
+                }
+                System.out.print(highestRender.getSymbol() + " ");
             }
             System.out.println();
         }
     }
     public void place(Model model) {
-        map[model.getPosition().getX()][model.getPosition().getY()] = model;
+        map.get(model.getPosition().getX()).get(model.getPosition().getY()).add(model);
     }
 
 

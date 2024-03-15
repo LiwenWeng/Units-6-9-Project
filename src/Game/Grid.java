@@ -1,5 +1,7 @@
+import java.util.ArrayList;
+
 public class Grid {
-    private Model[][] map;
+
 
     public Grid() {
         map = new Model[5][9];
@@ -8,7 +10,11 @@ public class Grid {
                 map[i][j] = new Model(new Vector2(i, j));
             }
         }
-        map[0][0] = new Sunflower(new Vector2(0, 0));
+        place(new LawnMower(new Vector2(0, 0)));
+        place(new LawnMower(new Vector2(2, 4)));
+        place(new LawnMower(new Vector2(3, 1)));
+        place(new LawnMower(new Vector2(4, 2)));
+        place(new LawnMower(new Vector2(1, 7)));
     }
 
     public void printMap() {
@@ -19,8 +25,8 @@ public class Grid {
             System.out.println();
         }
     }
-    public void place(Model model, Vector2 position) {
-        map[position.getX()]
+    public void place(Model model) {
+        map[model.getPosition().getX()][model.getPosition().getY()] = model;
     }
 
 

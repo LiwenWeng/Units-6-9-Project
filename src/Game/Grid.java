@@ -17,12 +17,12 @@ public class Grid {
 
     public void printMap() {
         int count = 0;
-        System.out.println("  ___________________________ ");
+        System.out.println(" ___________________________ ");
         for (ArrayList<ArrayList<Model>> row : map) {
             if (count != 2) {
-                System.out.print(Utils.color(" | ", "Pink"));
+                System.out.print(Utils.color("| ", "Pink"));
             } else {
-                System.out.print(Utils.color(" | ", "Brown"));
+                System.out.print(Utils.color("| ", "Brown"));
             }
             count++;
             for (ArrayList<Model> column : row) {
@@ -37,17 +37,17 @@ public class Grid {
             System.out.print("__");
             System.out.println();
         }
-        System.out.println("  ___________________________ ");
+        System.out.println(" ___________________________ ");
     }
     public void place(Model model) {
         map.get(model.getPosition().getX()).get(model.getPosition().getY()).add(model);
     }
 
     private void spawnLawnMowers() {
-        place(new LawnMower(new Vector2(0, 0)));
-        place(new LawnMower(new Vector2(1, 0)));
-        place(new LawnMower(new Vector2(2, 0)));
-        place(new LawnMower(new Vector2(3, 0)));
-        place(new LawnMower(new Vector2(4, 0)));
+        place(new Lawnmower(new Vector2(0, 0)));
+        place(new Lawnmower(new Vector2(1, 0)));
+        place(new Lawnmower(new Vector2(2, 0)));
+        place(new Lawnmower(new Vector2(3, 0)));
+        place(new Lawnmower(new Vector2(4, 0)));
     }
 }

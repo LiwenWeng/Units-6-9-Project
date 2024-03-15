@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Grid {
-    ArrayList<ArrayList<ArrayList<Model>>> map;
+    private static ArrayList<ArrayList<ArrayList<Model>>> map;
 
     public Grid() {
         map = new ArrayList<>();
@@ -13,6 +13,8 @@ public class Grid {
             }
         }
         spawnLawnMowers();
+        Sun sun = new Sun(new Vector2(3, 3));
+        sun.dropSun();
     }
 
     public void printMap() {
@@ -39,8 +41,12 @@ public class Grid {
         }
         System.out.println("  ___________________________ ");
     }
-    public void place(Model model) {
+    public static void place(Model model) {
         map.get(model.getPosition().getX()).get(model.getPosition().getY()).add(model);
+    }
+
+    public static void remove(Model model) {
+        map.get(model.getPosition().getX()).get(model.getPosition().getY()).remove(model);
     }
 
     private void spawnLawnMowers() {

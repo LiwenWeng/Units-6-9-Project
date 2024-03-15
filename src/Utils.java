@@ -16,10 +16,10 @@ public class Utils {
         Colors.put("Purple", "\u001b[38;5;93m");
         Colors.put("Pink", "\u001b[38;5;201m");
         Colors.put("Gray", "\u001b[38;5;240m");
-        Colors.put("RedBG", "\u001b[48;5;196m");
-        Colors.put("Bold", "\u001b[1m");
         Colors.put("Brown", "\u001b[38;2;92;54;11m");
         Colors.put("Pink", "\u001b[38;2;207;83;83m");
+        Colors.put("RedBG", "\u001b[48;5;196m");
+        Colors.put("Bold", "\u001b[1m");
 
     }
 

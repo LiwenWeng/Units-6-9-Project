@@ -12,11 +12,7 @@ public class Grid {
                 map.get(i).get(j).add(new Model(new Vector2(i, j)));
             }
         }
-        place(new LawnMower(new Vector2(0, 0)));
-        place(new LawnMower(new Vector2(2, 4)));
-        place(new LawnMower(new Vector2(3, 1)));
-        place(new LawnMower(new Vector2(4, 2)));
-        place(new LawnMower(new Vector2(1, 7)));
+        spawnLawnMowers();
     }
 
     public void printMap() {
@@ -37,5 +33,11 @@ public class Grid {
         map.get(model.getPosition().getX()).get(model.getPosition().getY()).add(model);
     }
 
-
+    private void spawnLawnMowers() {
+        place(new LawnMower(new Vector2(0, 0)));
+        place(new LawnMower(new Vector2(1, 0)));
+        place(new LawnMower(new Vector2(2, 0)));
+        place(new LawnMower(new Vector2(3, 0)));
+        place(new LawnMower(new Vector2(4, 0)));
+    }
 }

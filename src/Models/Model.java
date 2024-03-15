@@ -12,7 +12,7 @@ public class Model {
     }
 
     public Model(Vector2 position) {
-        this("Grass", Utils.color("__", "Green"), position, 2);
+        this("Grass", Utils.color("__", "Green"), position, 0);
     }
 
     public String getSymbol() {

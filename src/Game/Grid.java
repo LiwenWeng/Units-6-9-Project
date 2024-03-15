@@ -20,7 +20,15 @@ public class Grid {
     }
 
     public void printMap() {
+        int count = 0;
+        System.out.println("  ___________________________ ");
         for (ArrayList<ArrayList<Model>> row : map) {
+            if (count != 2) {
+                System.out.print(Utils.color(" | ", "Pink"));
+            } else {
+                System.out.print(Utils.color(" | ", "Brown"));
+            }
+            count++;
             for (ArrayList<Model> column : row) {
                 Model highestRender = column.get(0);
                 for (Model model : column) {
@@ -30,8 +38,10 @@ public class Grid {
                 }
                 System.out.print(highestRender.getSymbol() + " ");
             }
+            System.out.print("__");
             System.out.println();
         }
+        System.out.println("  ___________________________ ");
     }
     public void place(Model model) {
         map.get(model.getPosition().getX()).get(model.getPosition().getY()).add(model);

@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Grid {
     private static ArrayList<ArrayList<ArrayList<Model>>> map;
+    private ArrayList<Lawnmower> lawnmowers;
 
     public Grid() {
         map = new ArrayList<>();
@@ -12,9 +13,15 @@ public class Grid {
                 map.get(i).get(j).add(new Model(new Vector2(i, j)));
             }
         }
+        lawnmowers = new ArrayList<>();
         spawnLawnMowers();
+
+
+        //test code
         Sun sun = new Sun(new Vector2(3, 3));
         sun.dropSun();
+
+        lawnmowers.get(0).activate();
     }
 
     public void printMap() {
@@ -50,10 +57,18 @@ public class Grid {
     }
 
     private void spawnLawnMowers() {
-        place(new Lawnmower(new Vector2(0, 0)));
-        place(new Lawnmower(new Vector2(1, 0)));
-        place(new Lawnmower(new Vector2(2, 0)));
-        place(new Lawnmower(new Vector2(3, 0)));
-        place(new Lawnmower(new Vector2(4, 0)));
+        Lawnmower lawnmower1 = new Lawnmower(new Vector2(0, 0));
+        Lawnmower lawnmower2 = new Lawnmower(new Vector2(1, 0));
+        Lawnmower lawnmower3 = new Lawnmower(new Vector2(2, 0));
+        Lawnmower lawnmower4 = new Lawnmower(new Vector2(3, 0));
+        Lawnmower lawnmower5 = new Lawnmower(new Vector2(4, 0));
+        lawnmowers.add(lawnmower1);
+        lawnmowers.add(lawnmower2);
+        lawnmowers.add(lawnmower3);
+        lawnmowers.add(lawnmower4);
+        lawnmowers.add(lawnmower5);
+        for (Lawnmower lawnmower : lawnmowers) {
+            place(lawnmower);
+        }
     }
 }

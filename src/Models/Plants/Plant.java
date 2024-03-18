@@ -1,9 +1,9 @@
 public class Plant extends Model {
     private int health;
     private int cost;
-    private double fireRate;
+    private int fireRate;
 
-    public Plant(String name, String symbol, Vector2 position, int renderPriority, int health, int cost, double fireRate) {
+    public Plant(String name, String symbol, Vector2 position, int renderPriority, int health, int cost, int fireRate) {
         super(name, symbol, position, renderPriority);
         this.health = health;
         this.cost = cost;
@@ -12,5 +12,13 @@ public class Plant extends Model {
 
     public int getCost() {
         return cost;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getFireRate() {
+        return fireRate;
     }
 }

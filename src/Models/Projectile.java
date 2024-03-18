@@ -5,5 +5,7 @@ public class Projectile extends Model {
         this.damage = damage;
     }
 
-
+    public void hitTarget() {
+        if (Grid.getMap2().get(Grid.getMap3().get(getP)))
+    }
 }

@@ -4,7 +4,7 @@ public class Game {
     int sun;
 
     public Game() {
-        this.sun = 100;
+        this.sun = 50;
     }
 
     public void start() {
@@ -12,7 +12,6 @@ public class Game {
         Grid grid = new Grid();
         printPlantBar();
         grid.printMap();
-        scanner.nextLine();
 
     }
 

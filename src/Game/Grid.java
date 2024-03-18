@@ -18,7 +18,7 @@ public class Grid {
 
 
         //test code
-        Sun sun = new Sun(new Vector2(3, 3));
+        Sun sun = new Sun(new Vector2());
         sun.dropSun();
 
         lawnmowers.get(0).activate();

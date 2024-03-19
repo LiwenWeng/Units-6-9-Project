@@ -4,7 +4,7 @@ public class Peashooter extends Plant {
 
     public Peashooter(Vector2 position, Grid map) {
         super("Peashooter", "🌱", position, 1, 300, 100, 1500);
-        projectile = new Projectile("Pea", "🍐", position, 2, 20);
+        projectile = new Projectile("Pea", "🍐", position, 2, 20, map);
         this.map = map;
     }
 

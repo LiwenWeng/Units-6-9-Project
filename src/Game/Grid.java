@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Grid {
-    private static ArrayList<ArrayList<ArrayList<Model>>> map;
+    private ArrayList<ArrayList<ArrayList<Model>>> map;
     private ArrayList<Lawnmower> lawnmowers;
 
     public Grid() {
@@ -18,21 +18,11 @@ public class Grid {
 
 
         //test code
-        Sun sun = new Sun(new Vector2());
+        Sun sun = new Sun(new Vector2(), this);
         sun.dropSun();
 
         lawnmowers.get(0).activate();
     }
-
-    public static ArrayList<ArrayList<ArrayList<Model>>> getMap() {
-        return map;
-    }
-//    public static ArrayList<ArrayList<Model>> getMap2(int idx) {
-//        return map.get(idx);
-//    }
-//    public static ArrayList<Model> getMap3(int idx) {
-//        return map.get(0).get(0);
-//    }
 
     public void printMap() {
         int count = 0;
@@ -58,25 +48,20 @@ public class Grid {
         }
         System.out.println(" ___________________________ ");
     }
-    public static void place(Model model) {
+
+    public void place(Model model) {
         map.get(model.getPosition().getX()).get(model.getPosition().getY()).add(model);
     }
 
-    public static void remove(Model model) {
+    public void remove(Model model) {
         map.get(model.getPosition().getX()).get(model.getPosition().getY()).remove(model);
     }
 
     private void spawnLawnMowers() {
-        Lawnmower lawnmower1 = new Lawnmower(new Vector2(0, 0));
-        Lawnmower lawnmower2 = new Lawnmower(new Vector2(1, 0));
-        Lawnmower lawnmower3 = new Lawnmower(new Vector2(2, 0));
-        Lawnmower lawnmower4 = new Lawnmower(new Vector2(3, 0));
-        Lawnmower lawnmower5 = new Lawnmower(new Vector2(4, 0));
-        lawnmowers.add(lawnmower1);
-        lawnmowers.add(lawnmower2);
-        lawnmowers.add(lawnmower3);
-        lawnmowers.add(lawnmower4);
-        lawnmowers.add(lawnmower5);
+        for (int i = 0; i < 5; i++) {
+            lawnmowers.add(new Lawnmower(new Vector2(i, 0), this));
+        }
+
         for (Lawnmower lawnmower : lawnmowers) {
             place(lawnmower);
         }

@@ -1,18 +1,19 @@
 import java.util.Scanner;
 
 public class Game {
-    int sun;
+    private int sun;
+    private Grid map;
+    private Scanner scanner;
 
     public Game() {
-        this.sun = 50;
+        sun = 50;
+        map = new Grid();
+        scanner = new Scanner(System.in);
     }
 
     public void start() {
-        Scanner scanner = new Scanner(System.in);
-        Grid grid = new Grid();
         printPlantBar();
-        grid.printMap();
-
+        map.printMap();
     }
 
     public int getSun() {
@@ -21,7 +22,7 @@ public class Game {
 
     public void printPlantBar() {
         Sunflower sunflower = new Sunflower(null);
-        Peashooter peashooter = new Peashooter(null);
+        Peashooter peashooter = new Peashooter(null, map);
         Wallnut wallnut = new Wallnut(null);
         Cherrybomb cherrybomb = new Cherrybomb(null);
         String sunString =  " " + formatSun(sun) + " ";

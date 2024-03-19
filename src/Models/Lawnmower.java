@@ -1,19 +1,22 @@
 public class Lawnmower extends Model {
-    public Lawnmower(Vector2 position) {
+    private Grid map;
+
+    public Lawnmower(Vector2 position, Grid map) {
         super("Lawn Mower", "🚜", position, 1);
+        this.map = map;
     }
 
     public void activate() {
         while (getPosition().getY() < 7) {
-            Grid.remove(this);
+            map.remove(this);
             getPosition().setY(getPosition().getY() + 1);
-            Grid.place(this);
+            map.place(this);
             try {
                 Thread.sleep(300);
             } catch (Exception e) {
 
             }
         }
-        Grid.remove(this);
+        map.remove(this);
     }
 }

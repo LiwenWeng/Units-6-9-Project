@@ -11,11 +11,7 @@ public class Lawnmower extends Model {
             map.remove(this);
             getPosition().setY(getPosition().getY() + 1);
             map.place(this);
-            try {
-                Thread.sleep(300);
-            } catch (Exception e) {
-
-            }
+            Utils.wait(300);
         }
         map.remove(this);
     }

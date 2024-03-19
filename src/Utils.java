@@ -46,4 +46,12 @@ public class Utils {
     public static String bold(String text) {
         return bold + text + reset;
     }
+
+    public static void wait(int s) {
+        try {
+            Thread.sleep(s);
+        } catch (Exception e) {
+
+        }
+    }
 }

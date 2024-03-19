@@ -12,8 +12,16 @@ public class Game {
     }
 
     public void start() {
-        printPlantBar();
-        map.printMap();
+        Scanner scanner = new Scanner(System.in);
+        Grid grid = new Grid();
+        spawnSun();
+        while (true) {
+            printPlantBar();
+            grid.printMap();
+            Utils.clearScreen();
+            Utils.wait(100);
+        }
+
     }
 
     public int getSun() {
@@ -44,5 +52,17 @@ public class Game {
         } else {
             return sun + "";
         }
+    }
+
+    public void spawnSun() {
+        Runnable runnable = () -> {
+            while (true) {
+                Sun sun = new Sun(new Vector2());
+                sun.dropSun();
+                Utils.wait(10000);
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.start();
     }
 }

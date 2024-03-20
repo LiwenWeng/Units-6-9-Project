@@ -9,9 +9,9 @@ public class Projectile extends Model {
     }
 
     public void hitTarget(Zombie zombie) {
-        if (map.get(getPosition().getX()).get(getPosition().getY()).contains(zombie)) {
-            zombie.takeDamage(damage);
-            map.remove(this);
-        }
+//        if (map.get(getPosition().getX()).get(getPosition().getY()).contains(zombie)) {
+//            zombie.takeDamage(damage);
+//            map.remove(this);
+//        }
     }
 }

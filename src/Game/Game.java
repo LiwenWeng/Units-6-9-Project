@@ -50,14 +50,14 @@ public class Game {
         } else if (sun >= 1000) {
             return "999";
         } else {
-            return sun + "";
+            return String.valueOf(sun);
         }
     }
 
     public void spawnSun() {
         Runnable runnable = () -> {
             while (true) {
-                Sun sun = new Sun(new Vector2());
+                Sun sun = new Sun(new Vector2(), map);
                 sun.dropSun();
                 Utils.wait(10000);
             }

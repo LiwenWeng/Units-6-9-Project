@@ -66,5 +66,4 @@ public class Grid {
             place(lawnmower);
         }
     }
-
 }

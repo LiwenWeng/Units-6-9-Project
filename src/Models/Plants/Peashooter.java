@@ -15,18 +15,10 @@ public class Peashooter extends Plant {
                 map.remove(projectile);
                 projectile.getPosition().setY(projectile.getPosition().getY() + 1);
                 map.place(projectile);
-                try {
-                    Thread.sleep(300);
-                } catch (Exception e) {
-
-                }
+                Utils.wait(300);
             }
             map.remove(projectile);
-            try {
-                Thread.sleep(getFireRate());
-            } catch (Exception e) {
-
-            }
+            Utils.wait(getFireRate());
         }
     }
 }

@@ -1,6 +1,7 @@
 public class Projectile extends Model {
     private int damage;
     private Grid map;
+
     public Projectile(String name, String symbol, Vector2 position, int renderPriority, int damage, Grid map) {
         super(name, symbol, position, renderPriority);
         this.damage = damage;

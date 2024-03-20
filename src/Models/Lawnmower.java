@@ -7,12 +7,16 @@ public class Lawnmower extends Model {
     }
 
     public void activate() {
-        while (getPosition().getY() < 7) {
+        Runnable runnable = () -> {
+            while (getPosition().getY() < 7) {
+                map.remove(this);
+                getPosition().setY(getPosition().getY() + 1);
+                map.place(this);
+                Utils.wait(300);
+            }
             map.remove(this);
-            getPosition().setY(getPosition().getY() + 1);
-            map.place(this);
-            Utils.wait(300);
-        }
-        map.remove(this);
+        };
+        Thread thread = new Thread(runnable);
+        thread.start();
     }
 }

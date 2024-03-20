@@ -47,10 +47,10 @@ public class Utils {
         return bold + text + reset;
     }
 
-    public static void wait(int s) {
+    public static void wait(int ms) {
         try {
-            Thread.sleep(s);
-        } catch (Exception e) {
+            Thread.sleep(ms);
+        } catch (Exception ignored) {
 
         }
     }

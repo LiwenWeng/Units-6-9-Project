@@ -24,6 +24,10 @@ public class Grid {
         lawnmowers.get(0).activate();
     }
 
+    public ArrayList<ArrayList<ArrayList<Model>>> getMap() {
+        return map;
+    }
+
     public void printMap() {
         int count = 0;
         System.out.println(" ___________________________ ");

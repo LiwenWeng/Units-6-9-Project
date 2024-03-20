@@ -47,4 +47,8 @@ public class Model {
         this.renderPriority = renderPriority;
     }
 
+//    public boolean overlaps(Model model) {
+//        return grid.getMap().get(getPosition().getX()).get(getPosition().getY()).contains(model);
+//    }
+
 }

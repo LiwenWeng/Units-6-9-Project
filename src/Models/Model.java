@@ -13,8 +13,8 @@ public class Model {
         this.grid = grid;
     }
 
-    public Model(Vector2 position) {
-        this("Grass", Utils.color("__", "Green"), position, 0, new Grid());
+    public Model(Vector2 position, Grid grid) {
+        this("Grass", Utils.color("__", "Green"), position, 0, grid);
     }
 
     public String getSymbol() {

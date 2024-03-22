@@ -54,4 +54,9 @@ public class Utils {
 
         }
     }
+
+    public static void newThread(Runnable runnable) {
+        Thread thread = new Thread(runnable);
+        thread.start();
+    }
 }

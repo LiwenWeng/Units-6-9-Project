@@ -48,28 +48,25 @@ public class Game {
         }
     }
 
+    // TODO: make a gameOver variable
     public void spawnSun() {
-        Runnable runnable = () -> {
+        Utils.newThread(() -> {
             while (true) {
                 Sun sun = new Sun(new Vector2(), grid);
                 sun.dropSun();
-                Utils.wait(10000);
+                Utils.wait(500);
             }
-        };
-        Thread thread = new Thread(runnable);
-        thread.start();
+        });
     }
 
     public void updateMap() {
-        Runnable runnable = () -> {
+        Utils.newThread(() -> {
             while (true) {
                 printPlantBar();
                 grid.printMap();
                 Utils.clearScreen();
                 Utils.wait(100);
             }
-        };
-        Thread thread = new Thread(runnable);
-        thread.start();
+        });
     }
 }

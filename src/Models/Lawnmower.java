@@ -4,7 +4,7 @@ public class Lawnmower extends Model {
     }
 
     public void activate() {
-        Runnable runnable = () -> {
+        Utils.newThread(() -> {
             while (getPosition().getY() < 7) {
                 getGrid().remove(this);
                 getPosition().setY(getPosition().getY() + 1);
@@ -12,8 +12,6 @@ public class Lawnmower extends Model {
                 Utils.wait(300);
             }
             getGrid().remove(this);
-        };
-        Thread thread = new Thread(runnable);
-        thread.start();
+        });
     }
 }

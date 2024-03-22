@@ -9,17 +9,15 @@ public class Sun extends Model {
     }
 
     public void dropSun() { //drops sun from sky; sometimes doesn't work
-        Runnable runnable = () -> {
-            getPosition().setY((int) (Math.random() * 8));
-            int c = (int) (Math.random() * 5);
-            for (int i = 0; i < c; i++) {
-                getGrid().remove(this);
-                getPosition().setX(i);
-                getGrid().place(this);
-                Utils.wait(1000);
-            }
-        };
-        Thread thread = new Thread(runnable);
-        thread.start();
+       Utils.newThread(() -> {
+           getPosition().setY((int) (Math.random() * 7) + 1);
+           int c = (int) (Math.random() * 6);
+           for (int i = 0; i < c; i++) {
+               getGrid().remove(this);
+               getPosition().setX(i);
+               getGrid().place(this);
+               Utils.wait(10000);
+           }
+       });
     }
 }

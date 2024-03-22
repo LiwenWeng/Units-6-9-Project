@@ -10,7 +10,7 @@ public class Grid {
             map.add(new ArrayList<>());
             for (int j = 0; j < 8; j++) {
                 map.get(i).add(new ArrayList<>());
-                map.get(i).get(j).add(new Model(new Vector2(i, j)));
+                map.get(i).get(j).add(new Model(new Vector2(i, j), this));
             }
         }
         lawnmowers = new ArrayList<>();

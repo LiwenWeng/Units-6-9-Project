@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Projectile extends Model {
     private int damage;
 
@@ -6,10 +8,13 @@ public class Projectile extends Model {
         this.damage = damage;
     }
 
-    public void hitTarget(Zombie zombie) {
-        if (getGrid().getMap().get(getPosition().getX()).get(getPosition().getY()).contains(zombie)) {
-            zombie.takeDamage(damage);
-            getGrid().remove(this);
+    public void hitTarget() {
+        ArrayList<Model> tile = getGrid().getMap().get(getPosition().getX()).get(getPosition().getY());
+        for (Model model : tile) {
+            if (model instanceof Zombie) {
+                ((Zombie) model).takeDamage(damage);
+                getGrid().remove(this);
+            }
         }
     }
 }

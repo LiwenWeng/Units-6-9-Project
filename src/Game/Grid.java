@@ -57,10 +57,7 @@ public class Grid {
     private void spawnLawnMowers() {
         for (int i = 0; i < 5; i++) {
             lawnmowers.add(new Lawnmower(new Vector2(i, 0), this));
-        }
-
-        for (Lawnmower lawnmower : lawnmowers) {
-            place(lawnmower);
+            place(lawnmowers.get(i));
         }
     }
 }

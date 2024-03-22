@@ -15,7 +15,6 @@ public class Game {
         updateMap();
         spawnSun();
 
-
     }
 
     public int getSun() {
@@ -54,7 +53,7 @@ public class Game {
             while (true) {
                 Sun sun = new Sun(new Vector2(), grid);
                 sun.dropSun();
-                Utils.wait(500);
+                Utils.wait(10000);
             }
         });
     }
@@ -62,9 +61,9 @@ public class Game {
     public void updateMap() {
         Utils.newThread(() -> {
             while (true) {
+                Utils.clearScreen();
                 printPlantBar();
                 grid.printMap();
-                Utils.clearScreen();
                 Utils.wait(100);
             }
         });

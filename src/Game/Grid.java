@@ -15,10 +15,6 @@ public class Grid {
         }
         lawnmowers = new ArrayList<>();
         spawnLawnMowers();
-
-
-        //test code
-        lawnmowers.get(0).activate();
     }
 
     public ArrayList<ArrayList<ArrayList<Model>>> getMap() {

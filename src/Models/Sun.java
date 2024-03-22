@@ -16,7 +16,7 @@ public class Sun extends Model {
                getGrid().remove(this);
                getPosition().setX(i);
                getGrid().place(this);
-               Utils.wait(10000);
+               Utils.wait(750);
            }
        });
     }

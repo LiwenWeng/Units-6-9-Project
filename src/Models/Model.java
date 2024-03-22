@@ -52,9 +52,4 @@ public class Model {
     public Grid getGrid() {
         return grid;
     }
-
-//    public boolean overlaps(Model model) {
-//        return grid.getMap().get(getPosition().getX()).get(getPosition().getY()).contains(model);
-//    }
-
 }

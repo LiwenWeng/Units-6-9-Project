@@ -12,14 +12,22 @@ cd ..
 # Create a directory for compiled files if it doesn't exist
 mkdir -p compiled
 
-# Compile all Java files in the src directory and place the class files in the compiled directory
-javac -d compiled src/*.java
+javac -d ./compiled/ \
+./src/Main.java \
+./src/Utils.java \
+./src/Game/Cursor.java \
+./src/Game/Game.java \
+./src/Game/Grid.java \
+./src/Game/Vector2.java \
+./src/Models/Lawnmower.java \
+./src/Models/Model.java \
+./src/Models/Projectile.java \
+./src/Models/Sun.java \
+./src/Models/Plants/Cherrybomb.java \
+./src/Models/Plants/Peashooter.java \
+./src/Models/Plants/Plant.java \
+./src/Models/Plants/Sunflower.java \
+./src/Models/Plants/Wallnut.java \
+./src/Models/Zombies/Zombie.java
 
-# Check if the compilation was successful
-if [ $? -eq 0 ]; then
-    echo "Compilation successful."
-    # Run the Java program (assuming the main class is YourJavaFile in the default package)
-    java -cp compiled Main
-else
-    echo "Compilation failed. Check your code."
-fi
+java -cp compiled Main

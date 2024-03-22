@@ -6,17 +6,18 @@ public class Peashooter extends Plant {
         projectile = new Projectile("Pea", "🍐", position, 2, 20, grid);
     }
 
-//    public void shoot() {
-//        while (getHealth() > 0 && overlaps()) {
-//            grid.place(projectile);
-//            while (projectile.getPosition().getY() < 7) {
-//                grid.remove(projectile);
-//                projectile.getPosition().setY(projectile.getPosition().getY() + 1);
-//                grid.place(projectile);
-//                Utils.wait(300);
-//            }
-//            grid.remove(projectile);
-//            Utils.wait(getFireRate());
-//        }
-//    }
+    public void shoot() {
+        while (getHealth() > 0) {
+            getGrid().place(projectile);
+            while (projectile.getPosition().getY() < 7) {
+                getGrid().remove(projectile);
+                projectile.getPosition().setY(projectile.getPosition().getY() + 1);
+                getGrid().place(projectile);
+                projectile.hitTarget();
+                Utils.wait(200);
+            }
+            getGrid().remove(projectile);
+            Utils.wait(getFireRate());
+        }
+    }
 }

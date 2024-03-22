@@ -1,20 +1,17 @@
 public class Lawnmower extends Model {
-    private Grid map;
-
-    public Lawnmower(Vector2 position, Grid map) {
-        super("Lawn Mower", "🚜", position, 1);
-        this.map = map;
+    public Lawnmower(Vector2 position, Grid grid) {
+        super("Lawn Mower", "🚜", position, 1, grid);
     }
 
     public void activate() {
         Runnable runnable = () -> {
             while (getPosition().getY() < 7) {
-                map.remove(this);
+                getGrid().remove(this);
                 getPosition().setY(getPosition().getY() + 1);
-                map.place(this);
+                getGrid().place(this);
                 Utils.wait(300);
             }
-            map.remove(this);
+            getGrid().remove(this);
         };
         Thread thread = new Thread(runnable);
         thread.start();

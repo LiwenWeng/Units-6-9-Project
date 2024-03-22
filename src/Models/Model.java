@@ -3,16 +3,18 @@ public class Model {
     private String name;
     private Vector2 position;
     private int renderPriority;
+    private Grid grid;
 
-    public Model(String name, String symbol, Vector2 position, int renderPriority) {
+    public Model(String name, String symbol, Vector2 position, int renderPriority, Grid grid) {
         this.position = position;
         this.symbol = symbol;
         this.name = name;
         this.renderPriority = renderPriority;
+        this.grid = grid;
     }
 
     public Model(Vector2 position) {
-        this("Grass", Utils.color("__", "Green"), position, 0);
+        this("Grass", Utils.color("__", "Green"), position, 0, new Grid());
     }
 
     public String getSymbol() {
@@ -45,6 +47,10 @@ public class Model {
 
     public void setRenderPriority(int renderPriority) {
         this.renderPriority = renderPriority;
+    }
+
+    public Grid getGrid() {
+        return grid;
     }
 
 //    public boolean overlaps(Model model) {

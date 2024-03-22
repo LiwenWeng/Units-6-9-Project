@@ -2,12 +2,12 @@ import java.util.Scanner;
 
 public class Game {
     private int sun;
-    private Grid map;
+    private Grid grid;
     private Scanner scanner;
 
     public Game() {
         sun = 50;
-        map = new Grid();
+        grid = new Grid();
         scanner = new Scanner(System.in);
     }
 
@@ -23,10 +23,10 @@ public class Game {
     }
 
     public void printPlantBar() {
-        Sunflower sunflower = new Sunflower(null);
-        Peashooter peashooter = new Peashooter(null, map);
-        Wallnut wallnut = new Wallnut(null);
-        Cherrybomb cherrybomb = new Cherrybomb(null);
+        Sunflower sunflower = new Sunflower(null, grid);
+        Peashooter peashooter = new Peashooter(null, grid);
+        Wallnut wallnut = new Wallnut(null, grid);
+        Cherrybomb cherrybomb = new Cherrybomb(null, grid);
         String sunString =  " " + formatSun(sun) + " ";
 
 
@@ -51,7 +51,7 @@ public class Game {
     public void spawnSun() {
         Runnable runnable = () -> {
             while (true) {
-                Sun sun = new Sun(new Vector2(), map);
+                Sun sun = new Sun(new Vector2(), grid);
                 sun.dropSun();
                 Utils.wait(10000);
             }
@@ -64,7 +64,7 @@ public class Game {
         Runnable runnable = () -> {
             while (true) {
                 printPlantBar();
-                map.printMap();
+                grid.printMap();
                 Utils.clearScreen();
                 Utils.wait(100);
             }

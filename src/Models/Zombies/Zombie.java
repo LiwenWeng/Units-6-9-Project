@@ -2,8 +2,8 @@ public class Zombie extends Model {
     int health;
     int damage;
 
-    public Zombie(Vector2 position) {
-        super("Zombie", "🧟", position, 1);
+    public Zombie(Vector2 position, Grid grid) {
+        super("Zombie", "🧟", position, 1, grid);
         this.health = 200;
         this.damage = 100;
     }

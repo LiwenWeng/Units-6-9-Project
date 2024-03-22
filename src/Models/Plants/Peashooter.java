@@ -1,11 +1,9 @@
 public class Peashooter extends Plant {
     private Projectile projectile;
-    private Grid grid;
 
     public Peashooter(Vector2 position, Grid grid) {
-        super("Peashooter", "🌱", position, 1, 300, 100, 1500);
+        super("Peashooter", "🌱", position, 1, grid, 300, 100, 1500);
         projectile = new Projectile("Pea", "🍐", position, 2, 20, grid);
-        this.grid = grid;
     }
 
 //    public void shoot() {

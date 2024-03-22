@@ -3,8 +3,8 @@ public class Plant extends Model {
     private int cost;
     private int fireRate;
 
-    public Plant(String name, String symbol, Vector2 position, int renderPriority, int health, int cost, int fireRate) {
-        super(name, symbol, position, renderPriority);
+    public Plant(String name, String symbol, Vector2 position, int renderPriority, Grid grid, int health, int cost, int fireRate) {
+        super(name, symbol, position, renderPriority, grid);
         this.health = health;
         this.cost = cost;
         this.fireRate = fireRate;

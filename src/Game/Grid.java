@@ -60,4 +60,11 @@ public class Grid {
             place(lawnmowers.get(i));
         }
     }
+
+    public void spawnZombies(int num) {
+        for (int i = 0; i < num; i++) {
+            place(new Zombie(new Vector2(5, (int) (Math.random() * 6)), this));
+            Utils.wait(1000);
+        }
+    }
 }

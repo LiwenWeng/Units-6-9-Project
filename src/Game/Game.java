@@ -4,11 +4,13 @@ public class Game {
     private int sun;
     private Grid grid;
     private Scanner scanner;
+    private int wave;
 
     public Game() {
         sun = 50;
         grid = new Grid();
         scanner = new Scanner(System.in);
+        wave = 1;
     }
 
     public void start() {
@@ -67,5 +69,10 @@ public class Game {
                 Utils.wait(100);
             }
         });
+    }
+
+    public void wave() {
+        grid.spawnZombies(wave * 2);
+        wave++;
     }
 }

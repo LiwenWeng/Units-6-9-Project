@@ -21,6 +21,10 @@ public class Grid {
         return map;
     }
 
+    public ArrayList<Lawnmower> getLawnmowers() {
+        return lawnmowers;
+    }
+
     public void printMap() {
         int count = 0;
         System.out.println(" ___________________________ ");

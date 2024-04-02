@@ -16,6 +16,7 @@ public class Game {
     public void start() {
         updateMap();
         spawnSun();
+        grid.getLawnmowers().get(0).activate();
 
     }
 
@@ -63,10 +64,10 @@ public class Game {
     public void updateMap() {
         Utils.newThread(() -> {
             while (true) {
-                Utils.clearScreen();
                 printPlantBar();
                 grid.printMap();
-                Utils.wait(100);
+                Utils.wait(500);
+                System.out.println("`");
             }
         });
     }

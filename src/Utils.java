@@ -59,4 +59,8 @@ public class Utils {
         Thread thread = new Thread(runnable);
         thread.start();
     }
+
+    public static void clear() {
+        System.out.println("`");
+    }
 }

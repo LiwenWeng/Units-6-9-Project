@@ -71,6 +71,13 @@ public class Game {
             }
         });
     }
+//call to update map from other classes instead of on loop?
+//    public static void update() {
+//        System.out.println("`");
+//        printPlantBar();
+//        grid.printMap();
+//        Utils.wait(500);
+//    }
 
     public void wave() {
         grid.spawnZombies(wave * 2);

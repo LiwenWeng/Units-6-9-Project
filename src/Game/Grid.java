@@ -67,6 +67,14 @@ public class Grid {
         map.get(model.getPosition().getX()).get(model.getPosition().getY()).remove(model);
     }
 
+    public Model contains(String modelName, Vector2 position) {
+        for (Model model : map.get(position.getX()).get(position.getY())) {
+            if (model == null) continue;
+            if (model.getName().equals(modelName)) return model;
+        }
+        return null;
+    }
+
     private void spawnLawnMowers() {
         for (int i = 0; i < 5; i++) {
             lawnmowers.add(new Lawnmower(new Vector2(i, 0), this));

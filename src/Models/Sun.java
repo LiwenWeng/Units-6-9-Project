@@ -1,12 +1,11 @@
 import java.util.ArrayList;
 
 public class Sun extends Model {
-    private int amount;
+    public static final int AMOUNT = 25;
     public static int sunOnMap = 0;
 
     public Sun(Vector2 position, Grid grid) {
         super("Sun", "☀️", position, 2, grid);
-        this.amount = 25;
     }
 
     public void dropSun() { //drops sun from sky; sometimes doesn't work
@@ -20,6 +19,7 @@ public class Sun extends Model {
                Utils.wait(750);
            }
            getGrid().remove(this, 20000);
+           sunOnMap--;
        });
     }
 }

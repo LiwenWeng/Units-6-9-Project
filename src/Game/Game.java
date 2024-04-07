@@ -1,14 +1,13 @@
-import javax.xml.transform.stream.StreamSource;
 import java.util.*;
 
 public class Game {
-    private int sun;
+    public static int sun;
     private Grid grid;
     private Scanner scanner;
     private int wave;
     private Cursor cursor;
     private volatile Queue<String> inputQueue;
-    private volatile boolean gameOver;
+    public volatile static boolean gameOver;
 
     public Game() {
         sun = 50;
@@ -24,7 +23,7 @@ public class Game {
         spawnSun();
         grid.getLawnmowers().get(0).activate();
         addInputsToQueue();
-        cursor.blink();
+        cursor.start();
         while (!gameOver) {
             updateMap();
             handleInputs();

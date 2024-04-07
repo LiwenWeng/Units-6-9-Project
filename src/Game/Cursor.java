@@ -1,18 +1,14 @@
+import jdk.jshell.execution.Util;
+
 public class Cursor extends Model {
     public Cursor(Grid grid) {
         super("Cursor", Utils.color("__", "Red"), new Vector2(0, 1), Integer.MAX_VALUE, grid);
         getGrid().place(this);
     }
 
-    public void blink() {
-        Utils.startThread(() -> {
-            while (true) {
-                setRenderPriority(Integer.MIN_VALUE);
-                Utils.wait(500);
-                setRenderPriority(Integer.MAX_VALUE);
-                Utils.wait(500);
-            }
-        });
+    public void start() {
+        blink();
+        collectSun();
     }
 
     public void move(String input) {
@@ -36,5 +32,29 @@ public class Cursor extends Model {
                 setPosition(new Vector2(x, y+1));
                 break;
         }
+    }
+
+    private void blink() {
+        Utils.startThread(() -> {
+            while (true) {
+                setRenderPriority(Integer.MIN_VALUE);
+                Utils.wait(500);
+                setRenderPriority(Integer.MAX_VALUE);
+                Utils.wait(500);
+            }
+        });
+    }
+
+    private void collectSun() {
+        Utils.startThread(() -> {
+            while (true) {
+                Model model = getGrid().contains("Sun", getPosition());
+                if (model != null) {
+                    Game.sun += Sun.AMOUNT;
+                    Sun.sunOnMap--;
+                    getGrid().remove(model);
+                }
+            }
+        });
     }
 }

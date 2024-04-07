@@ -26,4 +26,20 @@ public class Zombie extends Model {
             getGrid().remove(this);
         }
     }
+
+    public void start() {
+        Utils.startThread(() -> {
+            while (true) {
+                Model model = getGrid().contains(Plant.class, new Vector2(getPosition().getX(), getPosition().getY() - 1));
+                if (!(model instanceof Plant)) {
+                    Utils.wait(5000);
+                    getGrid().remove(this);
+                    getPosition().setY(getPosition().getY() - 1);
+                    getGrid().place(this);
+                } else {
+
+                }
+            }
+        });
+    }
 }

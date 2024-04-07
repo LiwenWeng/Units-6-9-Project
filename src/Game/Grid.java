@@ -97,9 +97,13 @@ public class Grid {
     }
 
     public void spawnZombies(int num) {
-        for (int i = 0; i < num; i++) {
-            place(new Zombie(new Vector2(5, (int) (Math.random() * 6)), this));
-            Utils.wait(1000);
-        }
+        Utils.startThread(() -> {
+            for (int i = 0; i < num; i++) {
+                Zombie zombie = new Zombie(new Vector2((int) (Math.random() * 5), 7), this);
+                place(zombie);
+                zombie.start();
+                Utils.wait((int) (Math.random() * 5000) + 500);
+            }
+        });
     }
 }

@@ -1,3 +1,4 @@
+import javax.xml.transform.stream.StreamSource;
 import java.util.*;
 
 public class Game {
@@ -21,8 +22,9 @@ public class Game {
 
     public void start() {
         spawnSun();
-        grid.getLawnmowers().get(0).activate();
+        wave();
         addInputsToQueue();
+        grid.place(new Sunflower(new Vector2(0, 1), grid));
         cursor.start();
         while (!gameOver) {
             updateMap();
@@ -88,8 +90,14 @@ public class Game {
 //    }
 
     public void wave() {
-        grid.spawnZombies(wave * 2);
-        wave++;
+
+        Utils.startThread(() -> {
+            while (true) {
+                grid.spawnZombies((int) (wave * 2));
+                wave++;
+                Utils.wait(wave * 10000);
+            }
+        });
     }
 
     private void addInputsToQueue() {

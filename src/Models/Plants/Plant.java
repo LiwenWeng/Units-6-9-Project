@@ -32,4 +32,10 @@ public class Plant extends Model {
             isAlive = false;
         }
     }
+
+    public void spawn(Vector2 position) {
+        if (getGrid().contains(Plant.class, position) == null) {
+            getGrid().place(this);
+        }
+    }
 }

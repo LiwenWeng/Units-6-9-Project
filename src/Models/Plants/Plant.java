@@ -28,4 +28,10 @@ public class Plant extends Model {
             getGrid().remove(this);
         }
     }
+
+    public void spawn(Vector2 position) {
+        if (getGrid().contains(Plant.class, position) == null) {
+            getGrid().place(this);
+        }
+    }
 }

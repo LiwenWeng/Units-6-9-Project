@@ -55,9 +55,9 @@ public class Grid {
     }
 
     public void remove(Model model) {
-        map.get(model.getPosition().getX()).get(model.getPosition().getY()).remove(model);
         ArrayList<Model> models = map.get(model.getPosition().getX()).get(model.getPosition().getY());
         if (!models.contains(model)) return;
+        map.get(model.getPosition().getX()).get(model.getPosition().getY()).remove(model);
     }
 
     public void remove(Model model, int delay) {

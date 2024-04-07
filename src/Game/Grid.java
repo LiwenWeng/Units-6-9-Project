@@ -78,6 +78,17 @@ public class Grid {
         return null;
     }
 
+    public <T> Model contains(Class<T> type, Vector2 position) {
+        try {
+            for (Model model : map.get(position.getX()).get(position.getY())) {
+                if (model == null) continue;
+                if (type.isInstance(model)) return model;
+            }
+        } catch (Exception ignored) {}
+
+        return null;
+    }
+
     private void spawnLawnMowers() {
         for (int i = 0; i < 5; i++) {
             lawnmowers.add(new Lawnmower(new Vector2(i, 0), this));

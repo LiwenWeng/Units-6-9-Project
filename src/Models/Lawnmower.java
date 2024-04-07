@@ -4,7 +4,7 @@ public class Lawnmower extends Model {
     }
 
     public void activate() {
-        Utils.newThread(() -> {
+        Utils.startThread(() -> {
             while (getPosition().getY() < 7) {
                 getGrid().remove(this);
                 getPosition().setY(getPosition().getY() + 1);

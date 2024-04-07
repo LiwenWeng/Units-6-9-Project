@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Game {
@@ -5,19 +6,21 @@ public class Game {
     private Grid grid;
     private Scanner scanner;
     private int wave;
+    private Cursor cursor;
 
     public Game() {
         sun = 50;
         grid = new Grid();
         scanner = new Scanner(System.in);
         wave = 1;
+        cursor = new Cursor(grid);
     }
 
     public void start() {
+        cursor.blink();
         updateMap();
         spawnSun();
         grid.getLawnmowers().get(0).activate();
-
     }
 
     public int getSun() {
@@ -52,7 +55,7 @@ public class Game {
 
     // TODO: make a gameOver variable
     public void spawnSun() {
-        Utils.newThread(() -> {
+        Utils.startThread(() -> {
             while (true) {
                 Sun sun = new Sun(new Vector2(), grid);
                 sun.dropSun();
@@ -62,7 +65,7 @@ public class Game {
     }
 
     public void updateMap() {
-        Utils.newThread(() -> {
+        Utils.startThread(() -> {
             while (true) {
                 printPlantBar();
                 grid.printMap();

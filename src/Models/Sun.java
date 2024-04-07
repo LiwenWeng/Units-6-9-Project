@@ -9,7 +9,7 @@ public class Sun extends Model {
     }
 
     public void dropSun() { //drops sun from sky; sometimes doesn't work
-       Utils.newThread(() -> {
+       Utils.startThread(() -> {
            getPosition().setY((int) (Math.random() * 7) + 1);
            int c = (int) (Math.random() * 6);
            for (int i = 0; i < c; i++) {

@@ -1,18 +1,40 @@
-import java.util.Arrays;
-
 public class Cursor extends Model {
     public Cursor(Grid grid) {
-        super("Cursor", "__", new Vector2(), Integer.MAX_VALUE, grid);
+        super("Cursor", Utils.color("__", "Red"), new Vector2(0, 1), Integer.MAX_VALUE, grid);
+        getGrid().place(this);
     }
 
     public void blink() {
         Utils.startThread(() -> {
             while (true) {
-                getGrid().remove(this);
+                setRenderPriority(Integer.MIN_VALUE);
                 Utils.wait(500);
-                getGrid().place(this);
+                setRenderPriority(Integer.MAX_VALUE);
                 Utils.wait(500);
             }
         });
+    }
+
+    public void move(String input) {
+        int x = getPosition().getX();
+        int y = getPosition().getY();
+        switch (input) {
+            case "w":
+                if (x == 0) break;
+                setPosition(new Vector2(x-1, y));
+                break;
+            case "s":
+                if (x == 4) break;
+                setPosition(new Vector2(x+1, y));
+                break;
+            case "a":
+                if (y == 1) break;
+                setPosition(new Vector2(x, y-1));
+                break;
+            case "d":
+                if (y == 7) break;
+                setPosition(new Vector2(x, y+1));
+                break;
+        }
     }
 }

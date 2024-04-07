@@ -30,7 +30,7 @@ public class Grid {
         System.out.println(" ___________________________ ");
         for (ArrayList<ArrayList<Model>> row : map) {
             if (count != 2) {
-                System.out.print(Utils.color("| ", "Pink"));
+                System.out.print(Utils.color("| ", "Brick"));
             } else {
                 System.out.print(Utils.color("| ", "Brown"));
             }

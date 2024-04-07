@@ -38,7 +38,9 @@ public class Model {
     }
 
     public void setPosition(Vector2 position) {
+        grid.remove(this);
         this.position = position;
+        grid.place(this);
     }
 
     public int getRenderPriority() {

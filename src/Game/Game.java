@@ -1,5 +1,5 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import javax.xml.transform.stream.StreamSource;
+import java.util.*;
 
 public class Game {
     private int sun;
@@ -7,6 +7,8 @@ public class Game {
     private Scanner scanner;
     private int wave;
     private Cursor cursor;
+    private volatile Queue<String> inputQueue;
+    private volatile boolean gameOver;
 
     public Game() {
         sun = 50;
@@ -14,13 +16,20 @@ public class Game {
         scanner = new Scanner(System.in);
         wave = 1;
         cursor = new Cursor(grid);
+        inputQueue = new LinkedList<>();
+        gameOver = false;
     }
 
     public void start() {
-        cursor.blink();
-        updateMap();
         spawnSun();
         grid.getLawnmowers().get(0).activate();
+        addInputsToQueue();
+        cursor.blink();
+        while (!gameOver) {
+            updateMap();
+            handleInputs();
+            Utils.wait(500);
+        }
     }
 
     public int getSun() {
@@ -65,14 +74,9 @@ public class Game {
     }
 
     public void updateMap() {
-        Utils.startThread(() -> {
-            while (true) {
-                printPlantBar();
-                grid.printMap();
-                Utils.wait(500);
-                System.out.println("`");
-            }
-        });
+        Utils.clear();
+        printPlantBar();
+        grid.printMap();
     }
 //call to update map from other classes instead of on loop?
 //    public static void update() {
@@ -85,5 +89,26 @@ public class Game {
     public void wave() {
         grid.spawnZombies(wave * 2);
         wave++;
+    }
+
+    private void addInputsToQueue() {
+        Utils.startThread(() -> {
+            while (true) {
+                String userInput = scanner.nextLine();
+                inputQueue.add(userInput);
+            }
+        });
+    }
+
+    private void handleInputs() {
+        System.out.print("> ");
+
+        if (!inputQueue.isEmpty()) {
+            String input = inputQueue.poll();
+            assert input != null;
+            if (new ArrayList<>(List.of(new String[]{"w", "a", "s", "d"})).contains(input.toLowerCase())) {
+                cursor.move(input.toLowerCase());
+            }
+        }
     }
 }

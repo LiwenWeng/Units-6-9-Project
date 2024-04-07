@@ -45,7 +45,7 @@ public class Zombie extends Model {
                     getGrid().place(this);
                 } else {
                     Utils.wait(1000);
-                    ((Plant) model).takeDamage(100);
+                    ((Plant) model).takeDamage(damage);
                 }
             }
             getGrid().remove(this);

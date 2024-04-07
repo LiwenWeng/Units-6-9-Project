@@ -68,10 +68,13 @@ public class Grid {
     }
 
     public Model contains(String modelName, Vector2 position) {
-        for (Model model : map.get(position.getX()).get(position.getY())) {
-            if (model == null) continue;
-            if (model.getName().equals(modelName)) return model;
-        }
+        try {
+            for (Model model : map.get(position.getX()).get(position.getY())) {
+                if (model == null) continue;
+                if (model.getName().equals(modelName)) return model;
+            }
+        } catch (Exception ignored) {}
+
         return null;
     }
 

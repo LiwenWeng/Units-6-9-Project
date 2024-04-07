@@ -66,8 +66,10 @@ public class Game {
     public void spawnSun() {
         Utils.startThread(() -> {
             while (true) {
+                if (Sun.sunOnMap > 5) continue;
                 Sun sun = new Sun(new Vector2(), grid);
                 sun.dropSun();
+                Sun.sunOnMap++;
                 Utils.wait(10000);
             }
         });

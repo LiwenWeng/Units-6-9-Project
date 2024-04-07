@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Sun extends Model {
     private int amount;
+    public static int sunOnMap = 0;
 
     public Sun(Vector2 position, Grid grid) {
         super("Sun", "☀️", position, 2, grid);
@@ -18,6 +19,7 @@ public class Sun extends Model {
                getGrid().place(this);
                Utils.wait(750);
            }
+           getGrid().remove(this, 20000);
        });
     }
 }

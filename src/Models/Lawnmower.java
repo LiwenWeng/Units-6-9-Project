@@ -5,13 +5,23 @@ public class Lawnmower extends Model {
 
     public void activate() {
         Utils.startThread(() -> {
-            while (getPosition().getY() < 7) {
-                getGrid().remove(this);
-                getPosition().setY(getPosition().getY() + 1);
-                getGrid().place(this);
-                Utils.wait(300);
+            while (true) {
+                Model model = getGrid().contains(Zombie.class, new Vector2(getPosition().getX(), getPosition().getY() + 1));
+                if (model instanceof Zombie) {
+                    while (getPosition().getY() < 7) {
+                        model = getGrid().contains(Zombie.class, new Vector2(getPosition().getX(), getPosition().getY()));
+                        if (model instanceof Zombie) {
+                            ((Zombie) model).takeDamage(10000);
+                        }
+                        getGrid().remove(this);
+                        getPosition().setY(getPosition().getY() + 1);
+                        getGrid().place(this);
+                        Utils.wait(300);
+                    }
+                    getGrid().remove(this);
+                    break;
+                }
             }
-            getGrid().remove(this);
         });
     }
 }

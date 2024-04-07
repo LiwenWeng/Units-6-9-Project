@@ -2,12 +2,15 @@ public class Plant extends Model {
     private int health;
     private int cost;
     private int fireRate;
+    private boolean isAlive;
+
 
     public Plant(String name, String symbol, Vector2 position, int renderPriority, Grid grid, int health, int cost, int fireRate) {
         super(name, symbol, position, renderPriority, grid);
         this.health = health;
         this.cost = cost;
         this.fireRate = fireRate;
+        isAlive = true;
     }
 
     public int getCost() {
@@ -26,6 +29,7 @@ public class Plant extends Model {
         health -= damage;
         if (health <= 0) {
             getGrid().remove(this);
+            isAlive = false;
         }
     }
 }

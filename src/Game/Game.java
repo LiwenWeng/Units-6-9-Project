@@ -93,9 +93,9 @@ public class Game {
 
         Utils.startThread(() -> {
             while (true) {
-                grid.spawnZombies((int) (wave * 2));
+                grid.spawnZombies((int) (wave * 1.25));
                 wave++;
-                Utils.wait(wave * 10000);
+                Utils.wait(wave * 15000);
             }
         });
     }

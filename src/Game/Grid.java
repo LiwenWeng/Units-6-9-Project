@@ -93,6 +93,7 @@ public class Grid {
         for (int i = 0; i < 5; i++) {
             lawnmowers.add(new Lawnmower(new Vector2(i, 0), this));
             place(lawnmowers.get(i));
+            lawnmowers.get(i).activate();
         }
     }
 

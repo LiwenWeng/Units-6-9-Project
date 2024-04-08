@@ -107,7 +107,6 @@ public class Grid {
         for (int i = 0; i < 5; i++) {
             lawnmowers.add(new Lawnmower(new Vector2(i, 0), this));
             place(lawnmowers.get(i));
-            lawnmowers.get(i).activate();
         }
     }
 
@@ -116,7 +115,6 @@ public class Grid {
             for (int i = 0; i < num; i++) {
                 Zombie zombie = new Zombie(new Vector2((int) (Math.random() * 5), 7), this);
                 place(zombie);
-                zombie.start();
                 Utils.wait((int) (Math.random() * 5000) + 500);
             }
         });

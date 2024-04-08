@@ -31,6 +31,10 @@ public class Plant extends Model {
             isAlive = false;
         }
     }
+    public boolean isAlive() {
+        return isAlive;
+    }
+
 
     public static void spawn(Grid grid, Vector2 position, int num) {
         if (grid.contains(new Class[]{Plant.class, Zombie.class}, position) == null) {

@@ -8,13 +8,7 @@ public class Projectile extends Model {
         this.damage = damage;
     }
 
-    public void hitTarget() {
-        ArrayList<Model> tile = getGrid().getMap().get(getPosition().getX()).get(getPosition().getY());
-        for (Model model : tile) {
-            if (model instanceof Zombie) {
-                ((Zombie) model).takeDamage(damage);
-                getGrid().remove(this);
-            }
-        }
+    public int getDamage() {
+        return damage;
     }
 }

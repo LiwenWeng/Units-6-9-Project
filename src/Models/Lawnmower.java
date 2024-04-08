@@ -1,15 +1,16 @@
 public class Lawnmower extends Model {
     public Lawnmower(Vector2 position, Grid grid) {
         super("Lawn Mower", "🚜", position, 1, grid);
+        start();
     }
 
-    public void activate() {
+    private void start() {
         Utils.startThread(() -> {
             while (true) {
                 Model model = getGrid().contains(Zombie.class, new Vector2(getPosition().getX(), getPosition().getY() + 1));
                 if (model instanceof Zombie) {
+                    Utils.wait(4000);
                     while (getPosition().getY() < 7) {
-
                         getGrid().remove(this);
                         getPosition().setY(getPosition().getY() + 1);
                         getGrid().place(this);

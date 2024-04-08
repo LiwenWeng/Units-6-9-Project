@@ -8,6 +8,7 @@ public class Zombie extends Model {
         this.health = 200;
         this.damage = 100;
         isAlive = true;
+        start();
     }
 
     public int getHealth() {
@@ -30,12 +31,12 @@ public class Zombie extends Model {
         }
     }
 
-    public void start() {
+    private void start() {
         Utils.startThread(() -> {
             while (isAlive) {
                 Model model = getGrid().contains(Plant.class, new Vector2(getPosition().getX(), getPosition().getY() - 1));
                 if (!(model instanceof Plant)) {
-                    Utils.wait(5000);
+                    Utils.wait(7000);
                     getGrid().remove(this);
                     if (getPosition().getY() == 0) {
                         Game.gameOver = true;

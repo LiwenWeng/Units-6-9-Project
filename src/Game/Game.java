@@ -9,6 +9,10 @@ public class Game {
     private Cursor cursor;
     private volatile Queue<String> inputQueue;
     public volatile static boolean gameOver;
+    private Sunflower sunflower;
+    private Peashooter peashooter;
+    private Wallnut wallnut;
+    private Cherrybomb cherrybomb;
 
     public Game() {
         sun = 50;
@@ -18,13 +22,16 @@ public class Game {
         cursor = new Cursor(grid);
         inputQueue = new LinkedList<>();
         gameOver = false;
+        sunflower = new Sunflower(null, grid);
+        peashooter = new Peashooter(null, grid);
+        wallnut = new Wallnut(null, grid);
+        cherrybomb = new Cherrybomb(null, grid);
     }
 
     public void start() {
         spawnSun();
         wave();
         addInputsToQueue();
-        grid.place(new Sunflower(new Vector2(0, 1), grid));
         cursor.start();
         while (!gameOver) {
             updateMap();
@@ -38,10 +45,6 @@ public class Game {
     }
 
     public void printPlantBar() {
-        Sunflower sunflower = new Sunflower(null, grid);
-        Peashooter peashooter = new Peashooter(null, grid);
-        Wallnut wallnut = new Wallnut(null, grid);
-        Cherrybomb cherrybomb = new Cherrybomb(null, grid);
         String sunString =  " " + formatSun(sun) + " ";
 
 

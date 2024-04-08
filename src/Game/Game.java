@@ -15,7 +15,7 @@ public class Game {
     private Cherrybomb cherrybomb;
 
     public Game() {
-        sun = 50;
+        sun = 1000;
         grid = new Grid();
         scanner = new Scanner(System.in);
         wave = 1;

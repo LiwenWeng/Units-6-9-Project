@@ -55,6 +55,10 @@ public class Grid {
         map.get(model.getPosition().getX()).get(model.getPosition().getY()).add(model);
     }
 
+    public void place(Model model, Vector2 position) {
+        map.get(position.getX()).get(position.getY()).add(model);
+    }
+
     public void remove(Model model) {
         ArrayList<Model> models = map.get(model.getPosition().getX()).get(model.getPosition().getY());
         if (!models.contains(model)) return;
@@ -105,8 +109,8 @@ public class Grid {
 
     public <T> boolean laneContains(Class<T> type, Vector2 position) {
         try {
-            for (int i = position.getX()+1; i < 7; i++) {
-                if (contains(type, new Vector2(i, position.getY())) != null) {
+            for (int i = position.getY()+1; i < 7; i++) {
+                if (contains(type, new Vector2(position.getX(), i)) != null) {
                     return true;
                 }
             }

@@ -1,5 +1,3 @@
-import jdk.jshell.execution.Util;
-
 public class Cursor extends Model {
     public Cursor(Grid grid) {
         super("Cursor", Utils.color("__", "Red"), new Vector2(0, 1), Integer.MAX_VALUE, grid);
@@ -36,7 +34,7 @@ public class Cursor extends Model {
 
     private void blink() {
         Utils.startThread(() -> {
-            while (true) {
+            while (!Game.gameOver) {
                 setRenderPriority(Integer.MIN_VALUE);
                 Utils.wait(500);
                 setRenderPriority(Integer.MAX_VALUE);
@@ -47,7 +45,7 @@ public class Cursor extends Model {
 
     private void collectSun() {
         Utils.startThread(() -> {
-            while (true) {
+            while (!Game.gameOver) {
                 Model model = getGrid().contains("Sun", getPosition());
                 if (model != null && !((Sun) model).isCollected()) {
                     Game.sun += Sun.AMOUNT;

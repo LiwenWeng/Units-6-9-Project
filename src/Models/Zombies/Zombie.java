@@ -11,18 +11,6 @@ public class Zombie extends Model {
         start();
     }
 
-    public int getHealth() {
-        return health;
-    }
-
-    public int getDamage() {
-        return damage;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
     public void takeDamage(int damage) {
         health -= damage;
         if (health <= 0) {

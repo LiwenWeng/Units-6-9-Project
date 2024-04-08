@@ -1,5 +1,3 @@
-import jdk.jshell.execution.Util;
-
 public class Projectile extends Model {
     private int damage;
     private Plant parent;
@@ -8,10 +6,6 @@ public class Projectile extends Model {
         super(name, symbol, position, renderPriority, grid);
         this.damage = damage;
         this.parent = parent;
-    }
-
-    public int getDamage() {
-        return damage;
     }
 
     public void start() {

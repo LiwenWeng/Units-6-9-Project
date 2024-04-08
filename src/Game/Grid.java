@@ -1,7 +1,5 @@
-import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 public class Grid {
     private ArrayList<ArrayList<ArrayList<Model>>> map;
@@ -18,14 +16,6 @@ public class Grid {
         }
         lawnmowers = new ArrayList<>();
         spawnLawnMowers();
-    }
-
-    public ArrayList<ArrayList<ArrayList<Model>>> getMap() {
-        return map;
-    }
-
-    public ArrayList<Lawnmower> getLawnmowers() {
-        return lawnmowers;
     }
 
     public void printMap() {

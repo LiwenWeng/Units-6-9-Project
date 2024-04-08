@@ -1,5 +1,7 @@
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class Grid {
     private ArrayList<ArrayList<ArrayList<Model>>> map;
@@ -59,17 +61,27 @@ public class Grid {
         map.get(position.getX()).get(position.getY()).add(model);
     }
 
-    public void remove(Model model) {
+    public boolean remove(Model model) {
         ArrayList<Model> models = map.get(model.getPosition().getX()).get(model.getPosition().getY());
-        if (!models.contains(model)) return;
+        if (!models.contains(model)) return false;
         map.get(model.getPosition().getX()).get(model.getPosition().getY()).remove(model);
+        return true;
     }
 
-    public void remove(Model model, int delay) {
+    public boolean remove(Model model, int delay) {
         Utils.wait(delay);
         ArrayList<Model> models = map.get(model.getPosition().getX()).get(model.getPosition().getY());
-        if (!models.contains(model)) return;
+        if (!models.contains(model)) return false;
         map.get(model.getPosition().getX()).get(model.getPosition().getY()).remove(model);
+        return true;
+    }
+
+    public boolean remove(Model model, Consumer<Integer> callback, Integer value) {
+        callback.accept(value);
+        ArrayList<Model> models = map.get(model.getPosition().getX()).get(model.getPosition().getY());
+        if (!models.contains(model)) return false;
+        map.get(model.getPosition().getX()).get(model.getPosition().getY()).remove(model);
+        return true;
     }
 
     public Model contains(String modelName, Vector2 position) {

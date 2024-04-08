@@ -49,10 +49,10 @@ public class Cursor extends Model {
         Utils.startThread(() -> {
             while (true) {
                 Model model = getGrid().contains("Sun", getPosition());
-                if (model != null) {
+                if (model != null && !((Sun) model).isCollected()) {
                     Game.sun += Sun.AMOUNT;
                     Sun.sunOnMap--;
-                    getGrid().remove(model);
+                    ((Sun) model).collect();
                 }
             }
         });

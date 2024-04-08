@@ -15,17 +15,17 @@ public class Game {
     private Cherrybomb cherrybomb;
 
     public Game() {
-        sun = 50;
+        sun = 500;
         grid = new Grid();
         scanner = new Scanner(System.in);
         wave = 1;
         cursor = new Cursor(grid);
         inputQueue = new LinkedList<>();
         gameOver = false;
-        sunflower = new Sunflower(null, grid);
-        peashooter = new Peashooter(null, grid);
-        wallnut = new Wallnut(null, grid);
-        cherrybomb = new Cherrybomb(null, grid);
+        sunflower = new Sunflower();
+        peashooter = new Peashooter();
+        wallnut = new Wallnut();
+        cherrybomb = new Cherrybomb();
     }
 
     public void start() {
@@ -36,7 +36,7 @@ public class Game {
         while (!gameOver) {
             updateMap();
             handleInputs();
-            Utils.wait(500);
+            Utils.wait(100);
         }
     }
 

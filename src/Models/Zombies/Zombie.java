@@ -25,6 +25,10 @@ public class Zombie extends Model {
                 Model model = getGrid().contains(Plant.class, new Vector2(getPosition().getX(), getPosition().getY() - 1));
                 if (!(model instanceof Plant)) {
                     Utils.wait(7000);
+                    model = getGrid().contains(Plant.class, new Vector2(getPosition().getX(), getPosition().getY() - 1));
+                    if (model instanceof Plant) {
+                        break;
+                    }
                     getGrid().remove(this);
                     if (getPosition().getY() == 0) {
                         Game.gameOver = true;

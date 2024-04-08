@@ -12,6 +12,7 @@ public class Cherrybomb extends Plant {
     @Override
     public void takeDamage(int damage) {
         Utils.startThread(() -> {
+            Utils.wait(500);
             for (int i = -1; i <= 1; i++) {
                 for (int j = -1; j <= 1; j++) {
                     Model model = getGrid().contains(Zombie.class, new Vector2(getPosition().getX() + i, getPosition().getY() + j));
@@ -24,4 +25,7 @@ public class Cherrybomb extends Plant {
             super.takeDamage(damage);
         });
     }
+
+
+
 }

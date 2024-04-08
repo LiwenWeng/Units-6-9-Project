@@ -14,7 +14,7 @@ public class Game {
     private Cherrybomb cherrybomb;
 
     public Game() {
-        sun = 500;
+        sun = 50;
         grid = new Grid();
         scanner = new Scanner(System.in);
         wave = 1;
@@ -34,9 +34,11 @@ public class Game {
         cursor.start();
         while (!gameOver) {
             updateMap();
+            System.out.println(Utils.color("Wave: " + wave, "Red"));
             handleInputs();
-            Utils.wait(100);
+            Utils.wait(500);
         }
+        printEndScreen();
     }
 
     public void printPlantBar() {
@@ -83,7 +85,7 @@ public class Game {
             while (!Game.gameOver) {
                 grid.spawnZombies((int) (wave * 1.25));
                 wave++;
-                Utils.wait(wave * 15000);
+                Utils.wait(15000 + wave  * 5000);
             }
         });
     }
@@ -109,5 +111,11 @@ public class Game {
                 Plant.spawn(grid, cursor.getPosition(), Integer.parseInt(input));
             }
         }
+    }
+
+    private void printEndScreen() {
+        Utils.clear();
+        System.out.println(Utils.color("GAME OVER", "Red"));
+        System.out.println("Waves survived: " + wave);
     }
 }

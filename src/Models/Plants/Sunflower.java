@@ -7,6 +7,7 @@ public class Sunflower extends Plant{
     private void start() {
         Utils.startThread(() -> {
             while (isAlive() && !Game.gameOver) {
+                if (getPosition() == null) continue;
                 Utils.wait(12000);
                 spawnSun();
                 Utils.wait(12000);

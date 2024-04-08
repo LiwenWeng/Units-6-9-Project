@@ -15,7 +15,7 @@ public class Game {
     private Cherrybomb cherrybomb;
 
     public Game() {
-        sun = 1000;
+        sun = 50;
         grid = new Grid();
         scanner = new Scanner(System.in);
         wave = 1;
@@ -46,8 +46,6 @@ public class Game {
 
     public void printPlantBar() {
         String sunString =  " " + formatSun(sun) + " ";
-
-
         String brownBar = Utils.color("|", "Brown");
         System.out.println(Utils.color(" __________________________", "Brown"));
         System.out.println(brownBar + "  ☀️ " + brownBar + " 🌻 " + brownBar + " 🌱 " + brownBar + " 🌰 " + brownBar + " 🍒 " + brownBar);
@@ -60,6 +58,7 @@ public class Game {
         } else if (sun / 100 <= 0) {
             return "0" + sun;
         } else if (sun >= 1000) {
+            Game.sun = 999;
             return "999";
         } else {
             return String.valueOf(sun);

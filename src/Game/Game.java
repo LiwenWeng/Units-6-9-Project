@@ -117,6 +117,8 @@ public class Game {
             assert input != null;
             if (new ArrayList<>(List.of(new String[]{"w", "a", "s", "d"})).contains(input.toLowerCase())) {
                 cursor.move(input.toLowerCase());
+            } else if (!input.isEmpty() && Integer.parseInt(input) > 0 && Integer.parseInt(input) < 5) {
+                Plant.spawn(grid, cursor.getPosition(), Integer.parseInt(input));
             }
         }
     }

@@ -4,7 +4,6 @@ public class Plant extends Model {
     private int fireRate;
     private boolean isAlive;
 
-
     public Plant(String name, String symbol, Vector2 position, int renderPriority, Grid grid, int health, int cost, int fireRate) {
         super(name, symbol, position, renderPriority, grid);
         this.health = health;
@@ -33,9 +32,22 @@ public class Plant extends Model {
         }
     }
 
-    public void spawn(Vector2 position) {
-        if (getGrid().contains(Plant.class, position) == null) {
-            getGrid().place(this);
+    public static void spawn(Grid grid, Vector2 position, int num) {
+        if (grid.contains(new Class[]{Plant.class, Zombie.class}, position) == null) {
+            switch (num) {
+                case 1:
+                    grid.place(new Sunflower(position, grid));
+                    break;
+                case 2:
+                    grid.place(new Peashooter(position, grid));
+                    break;
+                case 3:
+                    grid.place(new Wallnut(position, grid));
+                    break;
+                case 4:
+                    grid.place(new Cherrybomb(position, grid));
+                    break;
+            }
         }
     }
 }

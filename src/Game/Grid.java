@@ -90,6 +90,19 @@ public class Grid {
         return null;
     }
 
+    public <T> Model contains(Class<T>[] types, Vector2 position) {
+        try {
+            for (Model model : map.get(position.getX()).get(position.getY())) {
+                if (model == null) continue;
+                for (Class<T> type : types) {
+                    if (type.isInstance(model)) return model;
+                }
+            }
+        } catch (Exception ignored) {}
+
+        return null;
+    }
+
     private void spawnLawnMowers() {
         for (int i = 0; i < 5; i++) {
             lawnmowers.add(new Lawnmower(new Vector2(i, 0), this));

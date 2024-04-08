@@ -103,6 +103,17 @@ public class Grid {
         return null;
     }
 
+    public <T> boolean laneContains(Class<T> type, Vector2 position) {
+        try {
+            for (int i = position.getX()+1; i < 7; i++) {
+                if (contains(type, new Vector2(i, position.getY())) != null) {
+                    return true;
+                }
+            }
+        } catch (Exception ignored) {}
+        return false;
+    }
+
     private void spawnLawnMowers() {
         for (int i = 0; i < 5; i++) {
             lawnmowers.add(new Lawnmower(new Vector2(i, 0), this));

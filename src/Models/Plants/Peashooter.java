@@ -10,6 +10,7 @@ public class Peashooter extends Plant {
     public void start() {
         Utils.startThread(() -> {
             while (isAlive()) {
+
                 getGrid().place(projectile);
                 while (projectile.getPosition().getY() < 7) {
                     getGrid().remove(projectile);

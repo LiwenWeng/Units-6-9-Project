@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
 
 public class Utils {
     private Utils() {}
@@ -53,6 +54,13 @@ public class Utils {
         } catch (Exception ignored) {
 
         }
+    }
+
+    public static <T> void delay(int ms, Consumer<T> callback, T value) {
+        startThread(() -> {
+            wait(ms);
+            callback.accept(value);
+        });
     }
 
     public static void startThread(Runnable runnable) {

@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,10 +24,6 @@ public class Plant extends Model {
 
     public int getCost() {
         return COST;
-    }
-
-    public int getHealth() {
-        return health;
     }
 
     public int getFireRate() {

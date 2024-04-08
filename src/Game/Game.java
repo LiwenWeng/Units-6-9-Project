@@ -1,4 +1,3 @@
-import javax.xml.transform.stream.StreamSource;
 import java.util.*;
 
 public class Game {
@@ -40,10 +39,6 @@ public class Game {
         }
     }
 
-    public int getSun() {
-        return sun;
-    }
-
     public void printPlantBar() {
         String sunString =  " " + formatSun(sun) + " ";
         String brownBar = Utils.color("|", "Brown");
@@ -64,11 +59,9 @@ public class Game {
             return String.valueOf(sun);
         }
     }
-
-    // TODO: make a gameOver variable
     public void spawnSun() {
         Utils.startThread(() -> {
-            while (true) {
+            while (!Game.gameOver) {
                 if (Sun.sunOnMap > 5) continue;
                 Sun sun = new Sun(new Vector2(), grid);
                 sun.dropSun();
@@ -83,18 +76,11 @@ public class Game {
         printPlantBar();
         grid.printMap();
     }
-//call to update map from other classes instead of on loop?
-//    public static void update() {
-//        System.out.println("`");
-//        printPlantBar();
-//        grid.printMap();
-//        Utils.wait(500);
-//    }
 
     public void wave() {
 
         Utils.startThread(() -> {
-            while (true) {
+            while (!Game.gameOver) {
                 grid.spawnZombies((int) (wave * 1.25));
                 wave++;
                 Utils.wait(wave * 15000);
@@ -104,7 +90,7 @@ public class Game {
 
     private void addInputsToQueue() {
         Utils.startThread(() -> {
-            while (true) {
+            while (!Game.gameOver) {
                 String userInput = scanner.nextLine();
                 inputQueue.add(userInput);
             }

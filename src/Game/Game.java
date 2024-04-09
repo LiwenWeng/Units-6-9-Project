@@ -81,11 +81,11 @@ public class Game {
     }
 
     public void wave() {
-
         Utils.startThread(() -> {
+            Utils.wait(5000);
             while (!Game.gameOver) {
-                grid.spawnZombies((int) (wave * 1.25));
                 wave++;
+                grid.spawnZombies((int) (wave * 1.25));
                 Utils.wait(15000 + wave  * 5000);
             }
         });

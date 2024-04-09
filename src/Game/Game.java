@@ -44,6 +44,7 @@ public class Game {
             Utils.wait(500);
         }
         printEndScreen();
+        System.exit(0);
     }
 
     public void printPlantBar() {
@@ -111,9 +112,17 @@ public class Game {
         if (!inputQueue.isEmpty()) {
             String input = inputQueue.poll();
             assert input != null;
+
+            int intInput;
+            try {
+                intInput = Integer.parseInt(input);
+            } catch (Exception e) {
+                intInput = -1;
+            }
+
             if (new ArrayList<>(List.of(new String[]{"w", "a", "s", "d"})).contains(input.toLowerCase())) {
                 cursor.move(input.toLowerCase());
-            } else if (!input.isEmpty() && Integer.parseInt(input) > 0 && Integer.parseInt(input) < 5) {
+            } else if (intInput > 0 && intInput < 5) {
                 Plant.spawn(grid, cursor.getPosition(), Integer.parseInt(input));
             }
         }

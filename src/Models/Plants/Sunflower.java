@@ -3,11 +3,11 @@ public class Sunflower extends Plant{
         super("Sunflower", "🌻", position, 1, grid, 600, 50, 2400);
         start();
     }
+
     public Sunflower() {
         super("Sunflower", "🌻", null, 1, null, 600, 50, 2400);
         start();
     }
-
 
     private void start() {
         Utils.startThread(() -> {
@@ -24,10 +24,8 @@ public class Sunflower extends Plant{
         Utils.startThread(() -> {
             Sun sun = new Sun(this.getPosition(), getGrid());
             getGrid().place(sun);
-            getGrid().remove(sun, 20000);
+            sun.removeSun(20000);
         });
 
     }
-
-
 }

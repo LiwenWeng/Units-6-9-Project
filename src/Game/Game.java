@@ -17,7 +17,7 @@ public class Game {
         sun = 50;
         grid = new Grid();
         scanner = new Scanner(System.in);
-        wave = 1;
+        wave = 0;
         cursor = new Cursor(grid);
         inputQueue = new LinkedList<>();
         gameOver = false;
@@ -61,6 +61,7 @@ public class Game {
             return String.valueOf(sun);
         }
     }
+
     public void spawnSun() {
         Utils.startThread(() -> {
             while (!Game.gameOver) {

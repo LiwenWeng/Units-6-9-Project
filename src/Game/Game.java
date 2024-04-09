@@ -92,7 +92,7 @@ public class Game {
             while (!Game.gameOver) {
                 wave++;
                 grid.spawnZombies((int) (wave * ZOMBIE_MULTIPLIER));
-                Utils.wait(15000 + wave  * 10000);
+                Utils.wait(15000);
             }
         });
     }

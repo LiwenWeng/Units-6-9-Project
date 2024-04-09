@@ -6,12 +6,14 @@ public class Game {
     private Scanner scanner;
     private int wave;
     private Cursor cursor;
+    private MenuScreen menuScreen;
     private volatile Queue<String> inputQueue;
     public volatile static boolean gameOver;
     private Sunflower sunflower;
     private Peashooter peashooter;
     private Wallnut wallnut;
     private Cherrybomb cherrybomb;
+    private final double ZOMBIE_MULTIPLIER;
 
     public Game() {
         sun = 50;
@@ -19,15 +21,18 @@ public class Game {
         scanner = new Scanner(System.in);
         wave = 0;
         cursor = new Cursor(grid);
+        menuScreen = new MenuScreen(scanner);
         inputQueue = new LinkedList<>();
         gameOver = false;
         sunflower = new Sunflower();
         peashooter = new Peashooter();
         wallnut = new Wallnut();
         cherrybomb = new Cherrybomb();
+        ZOMBIE_MULTIPLIER = 1.25;
     }
 
     public void start() {
+        menuScreen.start();
         spawnSun();
         wave();
         addInputsToQueue();
@@ -85,7 +90,7 @@ public class Game {
             Utils.wait(10000);
             while (!Game.gameOver) {
                 wave++;
-                grid.spawnZombies((int) (wave * 1.25));
+                grid.spawnZombies((int) (wave * ZOMBIE_MULTIPLIER));
                 Utils.wait(15000 + wave  * 10000);
             }
         });

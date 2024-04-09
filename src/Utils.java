@@ -69,6 +69,6 @@ public class Utils {
     }
 
     public static void clear() {
-        System.out.println("`");
+        System.out.println("``");
     }
 }

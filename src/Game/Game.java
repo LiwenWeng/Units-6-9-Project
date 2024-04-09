@@ -16,10 +16,10 @@ public class Game {
     private final double ZOMBIE_MULTIPLIER;
 
     public Game() {
-        sun = 5000;
+        sun = 50;
         grid = new Grid();
         scanner = new Scanner(System.in);
-        wave = 100;
+        wave = 0;
         cursor = new Cursor(grid);
         menuScreen = new MenuScreen(scanner);
         inputQueue = new LinkedList<>();

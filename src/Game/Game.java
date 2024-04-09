@@ -130,7 +130,13 @@ public class Game {
 
     private void printEndScreen() {
         Utils.clear();
-        System.out.println(Utils.color("GAME OVER", "Red"));
+        String gameOverText = """
+                ╔═╗╔═╗╔╦╗╔═╗  ╔═╗╦  ╦╔═╗╦═╗┬
+                ║ ╦╠═╣║║║║╣   ║ ║╚╗╔╝║╣ ╠╦╝│
+                ╚═╝╩ ╩╩ ╩╚═╝  ╚═╝ ╚╝ ╚═╝╩╚═o
+                ------------------
+                """;
+        System.out.println(Utils.color(gameOverText, "Red"));
         System.out.println("Waves survived: " + wave);
     }
 }

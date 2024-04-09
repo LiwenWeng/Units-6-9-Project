@@ -32,11 +32,10 @@ public class MenuScreen {
         while (!input.isEmpty()) {
             Utils.clear();
             String GAME_NAME = Utils.color("""
-                      ____          _    _         __   _____   ___ _          _
-                     |_  /___ _ __ | |__(_)___ ___ \\ \\ / / __| | _ \\ |__ _ _ _| |_ ___
-                      / // _ \\ '  \\| '_ \\ / -_|_-<  \\ V /\\__ \\ |  _/ / _` | ' \\  _(_-<
-                     /___\\___/_|_|_|_.__/_\\___/__/   \\_/ |___/ |_| |_\\__,_|_||_\\__/__/
-                                                                                     
+                    ╔═╗┌─┐┌┬┐┌┐ ┬┌─┐┌─┐  ╦  ╦╔═╗  ╔═╗┬  ┌─┐┌┐┌┌┬┐┌─┐
+                    ╔═╝│ ││││├┴┐│├┤ └─┐  ╚╗╔╝╚═╗  ╠═╝│  ├─┤│││ │ └─┐
+                    ╚═╝└─┘┴ ┴└─┘┴└─┘└─┘   ╚╝ ╚═╝  ╩  ┴─┘┴ ┴┘└┘ ┴ └─┘
+                    ----------------------------------
                     """, "Green");
             System.out.println(GAME_NAME);
             for (String option : options) {
@@ -73,13 +72,11 @@ public class MenuScreen {
     private void credits() {
         Utils.clear();
         System.out.println(Utils.color("""
-  ___ ___ ___ ___ ___ _____ ___ 
- / __| _ \\ __|   \\_ _|_   _/ __|
-| (__|   / _|| |) | |  | | \\__ \\
- \\___|_|_\\___|___/___| |_| |___/
-
-----------------
-                                       """, "Blue"));
+                ╔═╗┬─┐┌─┐┌┬┐┬┌┬┐┌─┐
+                ║  ├┬┘├┤  │││ │ └─┐
+                ╚═╝┴└─└─┘─┴┘┴ ┴ └─┘
+                -------------
+                """, "Blue"));
 
         System.out.println("Made by: Oscar Chong, Ojiro Moy, and Liwen Weng");
         scanner.nextLine();

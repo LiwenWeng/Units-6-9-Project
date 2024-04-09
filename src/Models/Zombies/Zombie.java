@@ -25,7 +25,7 @@ public class Zombie extends Model {
                 Model model = getGrid().contains(Plant.class, new Vector2(getPosition().getX(), getPosition().getY() - 1));
                 if (model == null) {
                     boolean plantInFront = false;
-                    for (int i = 0; i < 70; i++) {
+                    for (int i = 0; i < 80; i++) {
                         model = getGrid().contains(Plant.class, new Vector2(getPosition().getX(), getPosition().getY() - 1));
                         if (model != null) {
                             plantInFront = true;

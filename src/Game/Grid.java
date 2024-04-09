@@ -143,7 +143,7 @@ public class Grid {
             for (int i = 0; i < num; i++) {
                 Zombie zombie = new Zombie(new Vector2((int) (Math.random() * 5), 7), this);
                 place(zombie);
-                Utils.wait((int) (Math.random() * 5000) + 500);
+                Utils.wait((int) (Math.random() * 5000) + 1500);
             }
         });
     }

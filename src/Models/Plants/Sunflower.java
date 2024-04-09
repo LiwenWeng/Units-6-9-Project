@@ -13,9 +13,9 @@ public class Sunflower extends Plant{
         Utils.startThread(() -> {
             while (isAlive() && !Game.gameOver) {
                 if (getPosition() == null) continue;
-                Utils.wait(12000);
+                Utils.wait(9000);
                 spawnSun();
-                Utils.wait(12000);
+                Utils.wait(9000);
             }
         });
     }
@@ -24,7 +24,7 @@ public class Sunflower extends Plant{
         Utils.startThread(() -> {
             Sun sun = new Sun(this.getPosition(), getGrid());
             getGrid().place(sun);
-            sun.removeSun(20000);
+            sun.removeSun(15000);
         });
 
     }

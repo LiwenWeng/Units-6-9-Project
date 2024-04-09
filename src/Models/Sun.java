@@ -14,6 +14,7 @@ public class Sun extends Model {
 
     public void collect() {
         collected = true;
+        Game.sun += AMOUNT;
     }
 
     public void dropSun() {
@@ -24,7 +25,7 @@ public class Sun extends Model {
                setPosition(new Vector2(i, getPosition().getY()));
                Utils.wait(750);
            }
-           removeSun(20000);
+           removeSun(15000);
            sunOnMap--;
        });
     }
@@ -33,7 +34,10 @@ public class Sun extends Model {
         getGrid().remove(
                 this,
                 (v) -> {
-                    Utils.startThread(() -> Utils.wait(v));
+                    Utils.startThread(() -> {
+                        Utils.wait(v);
+                        collect();
+                    });
                     while (true) {
                         if (!collected) continue;
                         if (getGrid().remove(this)) break;

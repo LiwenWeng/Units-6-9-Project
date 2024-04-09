@@ -74,7 +74,7 @@ public class Game {
                 Sun sun = new Sun(new Vector2(), grid);
                 sun.dropSun();
                 Sun.sunOnMap++;
-                Utils.wait(10000);
+                Utils.wait(7500);
             }
         });
     }

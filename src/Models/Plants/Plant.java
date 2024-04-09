@@ -43,7 +43,7 @@ public class Plant extends Model {
     }
 
     public static void spawn(Grid grid, Vector2 position, int num) {
-        if (grid.contains(new Class[]{Plant.class, Zombie.class}, position) == null) {
+        if (grid.contains(Plant.class, position) == null) {
             if (Game.sun < PLANT_INFO.get(num)) return;
             Game.sun -= PLANT_INFO.get(num);
             switch (num) {

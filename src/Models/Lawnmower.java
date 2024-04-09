@@ -18,9 +18,8 @@ public class Lawnmower extends Model {
                         getGrid().remove(this);
                         getPosition().setY(getPosition().getY() + 1);
                         getGrid().place(this);
-                        model = getGrid().contains(Zombie.class, new Vector2(getPosition().getX(), getPosition().getY()));
-                        if (model instanceof Zombie) {
-                            ((Zombie) model).takeDamage(10000);
+                        for (Model zombie : getGrid().getAllOfTypeAtPos(Zombie.class, getPosition())) {
+                            ((Zombie) zombie).takeDamage(10000);
                         }
                         Utils.wait(300);
                     }

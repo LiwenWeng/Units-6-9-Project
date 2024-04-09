@@ -109,6 +109,17 @@ public class Grid {
         return null;
     }
 
+    public <T> ArrayList<Model> getAllOfTypeAtPos(Class<T> type, Vector2 position) {
+        ArrayList<Model> result = new ArrayList<>();
+        try {
+            for (Model model : map.get(position.getX()).get(position.getY())) {
+                if (model == null) continue;
+                if (type.isInstance(model)) result.add(model);
+            }
+        } catch (Exception ignored) {}
+        return result;
+    }
+
     public <T> boolean laneContains(Class<T> type, Vector2 position) {
         try {
             for (int i = position.getY()+1; i < 7; i++) {
